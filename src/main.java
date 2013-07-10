@@ -1,17 +1,27 @@
 import java.io.*;
 import java.util.*;
+import java.awt.*;
+import java.awt.geom.*;
+import javax.swing.*;
+
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.chart.plot.XYPlot;
+import org.jfree.chart.renderer.xy.XYLineAndShapeRenderer;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
+import org.jfree.ui.ApplicationFrame;
+
 
 public class main {
-	public static void spitOut(Vector v) {		
-		Enumeration vEnum = v.elements();
-		while(vEnum.hasMoreElements()) {
-			System.out.print(vEnum.nextElement());
-			System.out.print("\n");
-		}					
-
-	}
+	
 	public static Vector readAndSplit(String filename,int splitColNum) {
 		Vector col = new Vector(1,1);
+		
+		
 		
 		try{
 			// Open file
@@ -49,12 +59,13 @@ public class main {
 		String filename = "Cr7MnpCr7ZngJ-0.440.mag2K";
 		field = readAndSplit(filename,1);
 		val = readAndSplit(filename,2);
-		
-		spitOut(val);
-		spitOut(field);
 				
-
+		debug.spitOut(val);
+		debug.spitOut(field);
+		
 	}
+	
+	
 
 }
 
