@@ -2,7 +2,14 @@ import java.io.*;
 import java.util.*;
 
 public class main {
-	
+	public static void spitOut(Vector v) {		
+		Enumeration vEnum = v.elements();
+		while(vEnum.hasMoreElements()) {
+			System.out.print(vEnum.nextElement());
+			System.out.print("\n");
+		}					
+
+	}
 	public static Vector readAndSplit(String filename,int splitColNum) {
 		Vector col = new Vector(1,1);
 		
@@ -36,18 +43,17 @@ public class main {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Vector xvalue = new Vector(1,1);
 		Vector field = new Vector(1,1);
+		Vector val = new Vector(1,1);
 
 		String filename = "Cr7MnpCr7ZngJ-0.440.mag2K";
 		field = readAndSplit(filename,1);
+		val = readAndSplit(filename,2);
+		
+		spitOut(val);
+		spitOut(field);
+				
 
-		//Read through fieldArray vector
-		Enumeration fEnum = field.elements();
-		while(fEnum.hasMoreElements()) {
-			System.out.print(fEnum.nextElement());
-			System.out.print("\n");
-		}					
 	}
 
 }
