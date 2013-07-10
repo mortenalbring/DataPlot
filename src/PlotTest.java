@@ -11,25 +11,24 @@ import org.jfree.ui.ApplicationFrame;
 
 public class PlotTest {
 
-	private XYSeriesCollection dataset;
+	public XYSeriesCollection dataset;
 	
 	public static void main (String[] args) {
-        new PlotTest();
+		XYSeries d = new XYSeries("moop");
+		d.add(1,2);
+		d.add(2,3);
+		d.add(4,5);
+        new PlotTest(d);
     }
 	
-	public PlotTest () {
-		dataset = new XYSeriesCollection();
-		XYSeries data = new XYSeries("data");
-		data.add(3,2);
-		data.add(7,12);
-		data.add(1,1);
-		
-		dataset.addSeries(data);
+	public PlotTest (XYSeries d) {
+		dataset = new XYSeriesCollection();		
+		dataset.addSeries(d);
 		showGraph();
 	}
 	
 	
-	private void showGraph() {
+	public void showGraph() {
 		final JFreeChart chart = createChart(dataset);
 		final ChartPanel chartPanel = new ChartPanel(chart);
         chartPanel.setPreferredSize(new java.awt.Dimension(500, 270));
@@ -40,7 +39,7 @@ public class PlotTest {
 	}
 	
 	
-	 private JFreeChart createChart(final XYDataset dataset) {
+	 public JFreeChart createChart(final XYDataset dataset) {
 	        final JFreeChart chart = ChartFactory.createScatterPlot(
 	            "Title",                  // chart title
 	            "X",                      // x axis label
