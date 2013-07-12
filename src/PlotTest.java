@@ -26,6 +26,10 @@ public class PlotTest {
 		dataset.addSeries(d);
 		showGraph();
 	}
+	public PlotTest (XYSeriesCollection d) {
+		dataset = d;		
+		showGraph();
+	}
 	
 	
 	public void showGraph() {

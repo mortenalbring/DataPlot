@@ -15,8 +15,8 @@ import org.jfree.data.xy.XYSeries;
 import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
-
-public class main {
+public class main {	
+	
 	
 	public static Vector readAndSplit(String filename,int splitColNum) {
 		/**
@@ -56,33 +56,49 @@ public class main {
 	 * @param args
 	 */
 	
-	public static void PlotData(XYSeries d) {
-		PlotTest p = new PlotTest(d);		
+	public static void PlotData(XYSeriesCollection setofdata) {
+		PlotTest p = new PlotTest(setofdata);		
 	}
+	
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Vector field = new Vector();
 		Vector val = new Vector();
 
 		// Reads in datafile
-		String filename = "Cr7MnpCr7ZngJ-0.440.mag2K";
+		String filename = "Cr7MnpCr7ZngJ0.080.mag2K";
 		field = readAndSplit(filename,1);
 		val = readAndSplit(filename,2);
-				
+		
 		// Spits out stuff to console
 		debug.spitOut(val);
 		debug.spitOut(field);
+		XYSeriesCollection setofdata;
+		setofdata = new XYSeriesCollection();
 		
-		XYSeries d = new XYSeries("blarg");
+		
+		XYSeries d = new XYSeries(filename);
 		for(int i=0;i<field.size();i++) {
 			d.add((Float)field.get(i),(Float)val.get(i));
 		}
+		setofdata.addSeries(d);
 		
-		PlotData(d);
+		// Reads in datafile
+		filename = "Cr7MnpCr7ZngJ0.080.mag4K";
+		field = readAndSplit(filename,1);
+		val = readAndSplit(filename,2);
+				
+		XYSeries d2 = new XYSeries(filename);
+		for(int i=0;i<field.size();i++) {
+			d2.add((Float)field.get(i),(Float)val.get(i));
+		}		
+		setofdata.addSeries(d2);
+		
+		PlotData(setofdata);
+		
 	}
-	
-	
-	
+		
 
 }
 
