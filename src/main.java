@@ -16,8 +16,6 @@ import org.jfree.data.xy.XYSeriesCollection;
 import org.jfree.ui.ApplicationFrame;
 
 public class main {	
-	
-	
 	public static Vector readAndSplit(String filename,int splitColNum) {
 		/**
 		 * Reads in a file and splits it by any string delimiter,
